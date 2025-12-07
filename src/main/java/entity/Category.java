@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
 public class Category {
 	private Integer id;
 	private String categoryName;
-	private String description;
 	private LocalDateTime createTime;
 
 	// MyBatis 要求无参 contractor

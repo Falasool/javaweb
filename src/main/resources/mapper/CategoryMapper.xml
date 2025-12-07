@@ -7,7 +7,6 @@
     <resultMap id="CategoryResultMap" type="entity.Category">
         <id property="id" column="id"/>
         <result property="categoryName" column="category_name"/>
-        <result property="description" column="description"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
 
@@ -15,7 +14,6 @@
         SELECT
             id,
             category_name,
-            description,
             create_time
         FROM
             Category

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <head>
     <title>Category List</title>
     <style>
@@ -93,8 +92,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <th>Create Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,7 +101,6 @@
                     <tr>
                         <td><c:out value="${category.id}"/></td>
                         <td><c:out value="${category.categoryName}"/></td>
-                        <td><c:out value="${category.description}"/></td>
                         <td class="actions">
                             <button class="button button-primary">Edit</button>
                             <button class="button button-danger">Delete</button>
