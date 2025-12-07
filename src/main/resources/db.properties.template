@@ -1,0 +1,11 @@
+# MySQL
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/your_db_name?useSSL=false&serverTimezone=Asia/Shanghai\
+  &characterEncoding=utf8
+jdbc.username=root
+jdbc.password=your_password
+
+# options
+jdbc.initialSize=5
+jdbc.maxActive=20
+jdbc.maxWait=3000
