@@ -3,42 +3,29 @@ package service.impl;
 import entity.Category;
 import service.CategoryService;
 import dao.CategoryMapper;
-import org.apache.ibatis.io.Resources;
+// 导入我们新建的工具类
+import util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    private SqlSessionFactory sqlSessionFactory;
-
-    public CategoryServiceImpl() {
-        try {
-            String resource = "mybatis-config.xml";
-            InputStream inputStream = Resources.getResourceAsStream(resource);
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public List<Category> getAllCategories() {
-        SqlSession sqlSession = null;
-        List<Category> categories = null;
-        try {
-            sqlSession = sqlSessionFactory.openSession();
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSession()) {
+
+            // 1. 获取 Mapper 接口的实现
             CategoryMapper categoryMapper = sqlSession.getMapper(CategoryMapper.class);
-            categories = categoryMapper.selectAllCategories();
-        } finally {
-            if (sqlSession != null) {
-                sqlSession.close();
-            }
+
+            // 2. 执行查询并返回结果
+            return categoryMapper.selectAllCategories();
+
+        } catch (Exception e) {
+            // 实际项目中应该记录日志
+            e.printStackTrace();
+            // 抛出运行时异常或返回空列表，取决于业务需求
+            return null;
         }
-        return categories;
     }
 }

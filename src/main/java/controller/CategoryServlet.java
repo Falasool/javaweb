@@ -24,6 +24,9 @@ public class CategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> categories = categoryService.getAllCategories();
+        // --- DEBUGGING ---
+        System.out.println("Number of categories fetched from database: " + (categories != null ? categories.size() : "null"));
+        // -----------------
         request.setAttribute("categories", categories);
         request.getRequestDispatcher("categoryList.jsp").forward(request, response);
     }
