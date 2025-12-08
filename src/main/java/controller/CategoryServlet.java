@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Category;
+import jakarta.servlet.annotation.WebServlet;
 import service.CategoryService;
 import service.impl.CategoryServiceImpl;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@WebServlet("/category")
 public class CategoryServlet extends HttpServlet {
 
     private CategoryService categoryService;

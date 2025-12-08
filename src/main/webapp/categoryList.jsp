@@ -93,6 +93,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Create Time</th>
+                    <th>Operation</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,6 +102,8 @@
                     <tr>
                         <td><c:out value="${category.id}"/></td>
                         <td><c:out value="${category.categoryName}"/></td>
+
+                        <td><c:out value="${category.createTime}"/></td>
                         <td class="actions">
                             <button class="button button-primary">Edit</button>
                             <button class="button button-danger">Delete</button>
