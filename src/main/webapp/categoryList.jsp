@@ -81,7 +81,7 @@
             </div>
             <div>
                 <button class="button button-success">Add New Category</button>
-                <button class="button button-primary">Update Categories</button>
+                <button class="button button-primary" id="updateCategoriesButton">Update Categories</button>
             </div>
         </div>
 
@@ -111,5 +111,10 @@
             </tbody>
         </table>
     </div>
+    <script>
+        document.getElementById('updateCategoriesButton').addEventListener('click', function() {
+            window.location.href = '${pageContext.request.contextPath}/Category';
+        });
+    </script>
 </body>
 </html>
