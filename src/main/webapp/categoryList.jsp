@@ -93,24 +93,21 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Create Time</th>
-                    <th>Operation</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <%-- Example row - will be replaced by dynamic data --%>
                 <c:forEach var="category" items="${categories}">
                     <tr>
                         <td><c:out value="${category.id}"/></td>
                         <td><c:out value="${category.categoryName}"/></td>
-
                         <td><c:out value="${category.createTime}"/></td>
                         <td class="actions">
-                            <button class="button button-primary">Edit</button>
-                            <button class="button button-danger">Delete</button>
+                            <a href="category/edit?id=${category.id}" class="button button-primary">Edit</a>
+                            <a href="category/delete?id=${category.id}" class="button button-danger" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
-                <%-- End example rows --%>
             </tbody>
         </table>
     </div>

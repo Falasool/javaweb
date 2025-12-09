@@ -28,4 +28,16 @@ public class CategoryServiceImpl implements CategoryService {
             return null;
         }
     }
+
+    @Override
+    public void deleteCategory(int id) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSession()) {
+            CategoryMapper categoryMapper = sqlSession.getMapper(CategoryMapper.class);
+            categoryMapper.deleteCategory(id);
+            sqlSession.commit();
+        } catch (Exception e) {
+            // In a real project, you should log this exception
+            e.printStackTrace();
+        }
+    }
 }

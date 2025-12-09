@@ -19,4 +19,8 @@
             Category
     </select>
 
+    <delete id="deleteCategory" parameterType="int">
+        DELETE FROM Category WHERE id = #{id}
+    </delete>
+
 </mapper>
