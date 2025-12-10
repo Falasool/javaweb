@@ -11,6 +11,15 @@ import entity.Category;
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> getAllCategories();
-    void deleteCategory(int id);
+	List<Category> getAllCategories();
+
+	void deleteCategory(int id);
+
+	void addCategory(Category category);
+
+	void editCategory(Category category);
+
+	Category getCategoryById(int id);
+
+	List<Category> searchCategories(String keyword);
 }

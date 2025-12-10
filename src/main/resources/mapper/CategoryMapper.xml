@@ -10,6 +10,25 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
+    <insert id="addCategory" parameterType="entity.Category" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Category (category_name, create_time) VALUES (#{categoryName}, #{createTime})
+    </insert>
+
+    <update id="editCategory" parameterType="entity.Category">
+        UPDATE Category
+        SET
+        category_name = #{categoryName},
+        create_time = #{createTime}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectCategoryById" parameterType="int" resultMap="CategoryResultMap">
+        SELECT id, category_name, create_time
+        FROM Category
+        WHERE id = #{id}
+    </select>
+
+
     <select id="selectAllCategories" resultMap="CategoryResultMap">
         SELECT
             id,
@@ -17,6 +36,15 @@
             create_time
         FROM
             Category
+    </select>
+    <select id="selectCategoryListByWord" resultType="entity.Category">
+        SELECT
+        id,
+        category_name,
+        create_time
+        FROM
+        Category
+        WHERE category_name LIKE CONCAT('%', #{keyword}, '%')
     </select>
 
     <delete id="deleteCategory" parameterType="int">
