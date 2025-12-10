@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Category;
+import jakarta.servlet.annotation.WebServlet;
 import service.CategoryService;
 import service.impl.CategoryServiceImpl;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@WebServlet("/")
 public class CategoryServlet extends HttpServlet {
 
 	private CategoryService categoryService;
@@ -43,10 +45,11 @@ public class CategoryServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			// redirect to homepage
 			categoryService.deleteCategory(id);
+			response.sendRedirect(request.getContextPath() + "/");
 		} catch (NumberFormatException e) {
 			// Handle error: id is not a valid number
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath() + "/");
 	}
 }

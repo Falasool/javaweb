@@ -104,7 +104,7 @@
                         <td><c:out value="${category.createTime}"/></td>
                         <td class="actions">
                             <a href="category/edit?id=${category.id}" class="button button-primary">Edit</a>
-                            <a href="category/delete?id=${category.id}" class="button button-danger" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                            <a href="${pageContext.request.contextPath}/delete?id=${category.id}" class="button button-danger" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -113,7 +113,7 @@
     </div>
     <script>
         document.getElementById('updateCategoriesButton').addEventListener('click', function() {
-            window.location.href = '${pageContext.request.contextPath}/Category';
+            window.location.href = '${pageContext.request.contextPath}';
         });
     </script>
 </body>
